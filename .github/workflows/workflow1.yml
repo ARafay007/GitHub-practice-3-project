@@ -1,0 +1,34 @@
+name: Test the App
+on: push
+jobs:
+  tests:
+    run-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+      - name: Install node.js
+        uses: actions/checkout@v6
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: npm run ci
+      - name: Run Lint
+        run: npm run lint
+      - name: Run Tests
+        run: npm run test
+  deploy:
+    needs: tests
+    run-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: uses: actions/checkout@v6
+      - name: Install Node.js
+        uses: actions/checkout@v6
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: npm run ci
+      - name: Build project
+        run: npm run build
+      - name: Deploy project
+        run: echo "Hoorraaayy!!..."
