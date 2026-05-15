@@ -2,7 +2,7 @@ name: Test the App
 on: push
 jobs:
   tests:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v6
@@ -18,7 +18,7 @@ jobs:
         run: npm run test
   deploy:
     needs: tests
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v6
